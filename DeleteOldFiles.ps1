@@ -1,7 +1,7 @@
 # Skript pro mazání starých souborů na základě konfigurace v JSON formátu
 $configPath = "C:\scripts\DeleteOldFiles\DeleteOldFiles_config.json"
 
-# Zkontroluj, zda je PowerShell spuštěn s administrátorskými právy
+# Zkontroluj, zda existuje konfigurační soubor
 if (-not (Test-Path $configPath)) {
     Write-Error "Konfigurační soubor nebyl nalezen: $configPath"
     exit 1
