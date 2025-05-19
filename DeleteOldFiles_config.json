@@ -1,0 +1,32 @@
+[
+    {
+        "older_than_days": 90,
+        "filetype": "pdf",
+        "path": "D:\\skener_E\\"
+    },
+    {
+        "older_than_days": 90,
+        "filetype": "pdf",
+        "path": "D:\\skener_E\\Skeny do 15.03.2024\\"
+    },
+    {
+        "older_than_days": 90,
+        "filetype": "*",
+        "path": "D:\\skener_E\\scany\\"
+    },
+    {
+        "older_than_days": 90,
+        "filetype": "pdf",
+        "path": "D:\\skener_E\\skener_E\\scany\\"
+    },
+	    {
+        "older_than_days": 90,
+        "filetype": "pdf",
+        "path": "D:\\skener_E\\skener_E\\Skeny do 15.03.2024\\"
+    },
+	 {
+        "older_than_days": 90,
+        "filetype": "pdf",
+        "path": "D:\\skener_E\\skener_E\\"
+    }
+]

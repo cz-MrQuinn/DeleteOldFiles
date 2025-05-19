@@ -1,0 +1,35 @@
+# Cesta ke konfiguračnímu CSV souboru
+$configPath = "C:\Scripts\DeleteOldFiles\DeleteOldFiles_config.csv"
+
+# Načti konfiguraci
+$configs = Import-Csv -Path $configPath
+
+foreach ($entry in $configs) {
+    $days = [int]$entry.older_than_days
+    $filetype = $entry.filetype
+    $path = $entry.path
+
+    if (-not (Test-Path $path)) {
+        Write-Warning "Adresář '$path' neexistuje. Přeskakuji."
+        continue
+    }
+
+    # Vytvoř filtr pro typ souboru
+    $filter = if ($filetype -eq "*") { "*.*" } else { "*.$filetype" }
+
+    # Získání všech odpovídajících souborů
+    $files = Get-ChildItem -Path $path -Filter $filter -File -Recurse -ErrorAction SilentlyContinue
+
+    # Datumový práh
+    $threshold = (Get-Date).AddDays(-$days)
+
+    foreach ($file in $files) {
+        if ($file.LastWriteTime -lt $threshold) {
+            try {
+                Remove-Item -Path $file.FullName -Force -Verbose
+            } catch {
+                Write-Error "Chyba při mazání: $($_.Exception.Message)"
+            }
+        }
+    }
+}
